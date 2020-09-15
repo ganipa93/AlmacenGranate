@@ -2,6 +2,8 @@ package modelo;
 
 import java.util.Iterator;
 import java.security.InvalidParameterException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 //Todo chequeado excepto lo que tenga que ver con listas carrito y dia retiro//
@@ -17,6 +19,8 @@ public class Comercio extends Actor {
 	private int porcentajeDescuentoEfectivo;
 	private ArrayList<DiaRetiro> lstDiaRetiro;
 	private ArrayList<Carrito> lstCarrito;
+	private ArrayList<Turno> lstTurnosLibres;
+	private ArrayList<Turno> lstTurnosOcupados;
 	
 	public Comercio(int id, Contacto contacto,String nombreComercio, String cuit, double costoFijo, double costoPorKm, int diaDescuento, int porcentajeDescuentoDia, int porcentajeDescuentoEfectivo)//, ArrayList<DiaRetiro> lstDiaRetiro, ArrayList<Carrito> lstCarrito) 
 	{
@@ -29,7 +33,10 @@ public class Comercio extends Actor {
 		setPorcentajeDescuentoDia(porcentajeDescuentoDia);
 		setPorcentajeDescuentoEfectivo(porcentajeDescuentoEfectivo);
 		setLstDiaRetiro(lstDiaRetiro);
-		//setLstCarrito(ArrayList<Carrito> lstCarrito);
+		//setLstCarrito(lstCarrito);
+		//setLstTurnosLibres(lstTurnosLibres);
+		setLstTurnosOcupados(lstTurnosOcupados);
+
 		
 	}
 
@@ -143,8 +150,36 @@ public class Comercio extends Actor {
 		return lstCarrito;
 	}
 
-	public void setLstCarrito(ArrayList<Carrito> lstCarrito) {
-		this.lstCarrito = lstCarrito;
+	public ArrayList<Carrito> setLstCarrito() {
+		return lstCarrito;
+	}
+	
+	public ArrayList<Turno> getLstTurnosLibres() {
+		return lstTurnosLibres;
+	}
+
+	public void setlstTurnosLibres(ArrayList<Turno> lstTurnosLibres) {
+		this.lstTurnosLibres = lstTurnosLibres;
+	}
+	
+	public ArrayList<Turno> getLstTurnosOcupados() {
+		return lstTurnosOcupados;
+	}
+
+	public void setLstTurnosOcupados(ArrayList<Turno> lstTurnosOcupados) {
+		this.lstTurnosOcupados = lstTurnosOcupados;
+	}
+	
+	/*public LocalTime traerHoraRetiro(LocalDate fecha) {
+		return fecha;
+	}*/
+	
+	public ArrayList<Turno> generarTurnosLibres (LocalDate fecha) {
+		return this.lstTurnosLibres = lstTurnosLibres;
+	}
+	
+	public ArrayList<Turno> traerTurnosOcupados (LocalDate fecha) {
+		return this.lstTurnosOcupados = lstTurnosOcupados;
 	}
 	
 	public boolean equals(Comercio comercio)
